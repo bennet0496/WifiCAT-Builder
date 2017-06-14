@@ -1,23 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region Licence
+
+// WifiCatBuilder - WifiCatBuilder - Form1.cs
+// Created 14.06.2017 19:08
+// 
+// 
+// Wifi Configuration Assist Tool
+// Copyright (C) 2017 Bennet Becker <bennet@becker-dd.de>
+// 
+// This program is free software: you can redistribute it and/or modify 
+// it under the terms of the GNU Affero General Public License as published by 
+// the Free Software Foundation, either version 3 of the License, or 
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful, 
+// but WITHOUT ANY WARRANTY; without even the implied warranty of 
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+// GNU Affero General Public License for more details.
+// 
+// You should have received a copy of the GNU Affero General Public License 
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+#endregion
+
+#region Using
+
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WifiCatBuilder.Properties;
+
+#endregion
 
 namespace WifiCatBuilder
 {
     public partial class Form1 : Form
     {
+        private string[] _brandsStrings;
         private X509Certificate2 _caCertificate;
         private X509Certificate2 _sigingCertificate;
-        private String[] _brandsStrings;
+
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +49,7 @@ namespace WifiCatBuilder
 
         private void ofd_cacert_FileOk(object sender, CancelEventArgs e)
         {
-            this._caCertificate = new X509Certificate2(ofd_cacert.FileName);
+            _caCertificate = new X509Certificate2(ofd_cacert.FileName);
             tt_cacert.SetToolTip(tb_cacert, _caCertificate.Subject);
             tb_cacert.Text = ofd_cacert.FileName;
         }
@@ -40,7 +64,7 @@ namespace WifiCatBuilder
             var brands = new BrandList();
             if (brands.ShowDialog() == DialogResult.OK)
             {
-                _brandsStrings = brands.lb_brands.Items.Cast<String>().ToArray();
+                _brandsStrings = brands.lb_brands.Items.Cast<string>().ToArray();
             }
             brands.Dispose();
         }
@@ -76,13 +100,13 @@ namespace WifiCatBuilder
 
         private void ofd_siging_cert_FileOk(object sender, CancelEventArgs e)
         {
-            bool succ = false;
-            string password = "";
+            var succ = false;
+            var password = "";
             while (!succ)
             {
                 try
                 {
-                    this._sigingCertificate = new X509Certificate2(ofd_siging_cert.FileName, password);
+                    _sigingCertificate = new X509Certificate2(ofd_siging_cert.FileName, password);
                     succ = true;
                 }
                 catch (CryptographicException cerr)
@@ -102,7 +126,8 @@ namespace WifiCatBuilder
             if (!_sigingCertificate.HasPrivateKey)
             {
                 MessageBox.Show(
-                    Resources.Form1_ofd_siging_cert_FileOk_This_Certificate_does_not_contains_a_Private_Key__therefore_it_is_intended_to_be_used_here_, 
+                    Resources
+                        .Form1_ofd_siging_cert_FileOk_This_Certificate_does_not_contains_a_Private_Key__therefore_it_is_intended_to_be_used_here_,
                     Resources.Form1_ofd_siging_cert_FileOk_Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 throw new CryptographicException("no private key");
             }
@@ -122,7 +147,6 @@ namespace WifiCatBuilder
 
         private void b_build_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
