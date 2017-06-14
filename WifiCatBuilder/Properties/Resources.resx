@@ -114,4 +114,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Form1_ofd_siging_cert_FileOk_This_Certificate_does_not_contains_a_Private_Key__therefore_it_is_intended_to_be_used_here_" xml:space="preserve">
+    <value>This Certificate does not contains a Private Key, therefore it is intended to be used here.</value>
+  </data>
+  <data name="Form1_ofd_siging_cert_FileOk_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
 </root>

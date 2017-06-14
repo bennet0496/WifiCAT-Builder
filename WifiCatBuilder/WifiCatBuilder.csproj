@@ -45,14 +45,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrandList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrandList.Designer.cs">
+      <DependentUpon>BrandList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrandList_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrandList_add.Designer.cs">
+      <DependentUpon>BrandList_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordPromt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordPromt.Designer.cs">
+      <DependentUpon>PasswordPromt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BrandList.resx">
+      <DependentUpon>BrandList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrandList_add.resx">
+      <DependentUpon>BrandList_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordPromt.resx">
+      <DependentUpon>PasswordPromt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,6 +91,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
